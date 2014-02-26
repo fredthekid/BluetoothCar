@@ -6,7 +6,7 @@ to the car. The arduino on the remote will be used to transfer data
 while the one on car will be used to control the car. Data transfer will
 be handled with serial communication using bluetooth.
 
-###Remote Arduino (TX)
+###Remote Arduino (TX):
 
 Each control from the remote will be mapped to a character which will be
 sent to the car through bluetooth
@@ -29,11 +29,11 @@ Button 2: Turn on/ Turn Off
 'e' = on
 'd' = off
 
-###Car Arduino (RX)
+###Car Arduino (RX):
 
 Each character recieved through will represent an action to perform on the car
 
 
-###Communication/Etc
+###Communication/Etc:
 
 
