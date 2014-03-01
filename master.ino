@@ -10,7 +10,7 @@ SoftwareSerial Master(9,10); // 9 = RX, 10 = TX
 //not done yet..will finish tmrw
 void btinit()
 {
-  boolean test = true; //used for t
+  boolean test = true; //used for error checking
   
   //init comp to uno serial
   Serial.begin(115200); //serial between computer and uno
