@@ -12,13 +12,13 @@ void btinit()
   Serial.begin(115200); //serial between computer and uno
   Serial.println("Initializing computer to UNO connection...");
   while(!Serial){;} //wait for connection
-  Serial.println(":)");
+  Serial.println("Connected");
   
   //init uno to bt serial
   Master.begin(9600); //serial between uno and bluetooth
   Serial.println("Initializing master...");
   while(!Master){;} //wait for connection
-  Serial.println(":)");
+  Serial.println("Connected");
   
   //config bluetooth for connection
   Master.print("$$$"); //enter command mode
