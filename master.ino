@@ -4,6 +4,10 @@
 
 SoftwareSerial Master(9,10); // 9 = RX, 10 = TX
 
+
+
+
+//not done yet..will finish tmrw
 void btinit()
 {
   boolean test = true; //used for t
