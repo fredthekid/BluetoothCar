@@ -3,22 +3,21 @@
 #include <SoftwareSerial.h>
 SoftwareSerial mySerial (5, 6);
 
-/*
-//For Horn
+const int front_LED [2] = {7, 8};
+const int back_LED [2] = {12, 13};
 
-const int songLength = 18;
-char notes[] = "cdfda ag cdfdg gf "
-int beats[] = {1,1,1,1,1,1,4,4,2,1,1,1,1,1,1,4,4,2};
-int tempo = 150;
-*/
 const int buzzerPin = 3;
 void setup(){
  mySerial.begin(9600);
  Serial.begin(115200);
  pinMode(3, OUTPUT);
  //steer.attach(3);
-  pinMode(9,OUTPUT);
-  pinMode(10,OUTPUT);
+   pinMode(7,OUTPUT);
+   pinMode(8,OUTPUT);
+   pinMode(9,OUTPUT);
+   pinMode(10,OUTPUT);
+   pinMode(11,OUTPUT);
+   pinMode(12,OUTPUT);
   TCCR1A	= 0b11110010;		// Clear OC1A/OC1B on compare match, set OC1A/OC1B at BOTTOM, Fast PWM mode
   TCCR1B	= 0b00011010;		// input noise canceler, input capture rising edge, 1 prescale
   ICR1	= 42000;     					// set period of PWM signal
@@ -59,14 +58,32 @@ void loop(){
 void Stop(void){
   OCR1A	= 3000;	
   OCR1B	= 3000;	
+ for(int i = 0; i<2; i++)
+ {
+ digitalWrite(front_LED[i], LOW);
+ digitalWrite(back_LED[i], LOW);
+ 
+ }
+  
 }
 
 void Forward(void){
   OCR1A	= 3400;	
-  OCR1B	= 2600;	  
+  OCR1B	= 2600;	
+   for(int i = 0; i<2; i++)
+ {
+ digitalWrite(front_LED[i], HIGH);
+ digitalWrite(back_LED[i], LOW);
+ }
 }
 
 void Reverse(void){
   OCR1A	= 2600;	
   OCR1B	= 3400;	
+   for(int i = 0; i<2; i++)
+ {
+ digitalWrite(back_LED[i], HIGH);
+ digitalWrite(front_LED[i], LOW);
+ }
+  
 }
