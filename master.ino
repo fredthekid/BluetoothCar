@@ -34,9 +34,8 @@ void loop(void){
   //static char Master_Reg = Register_Update();
   int thresh1 = Update_Thresh_P1();
   int thresh2 = Update_Thresh_P2();
-  char Register = ((Photo_ReadR(thresh2)<<1)|(Photo_ReadF(thresh1)))&0x03;
-  //Serial.write(Register); (Steer()<<3)|(Horn()<<2)|
-  Serial.write(Register);
+  char Register = Register_Update();
+  mySerial.write(Register);
 }
 
 char Register_Update(void){
