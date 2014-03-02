@@ -12,7 +12,7 @@
 SoftwareSerial mySerial(10,11); //arduino to bluetooth
 
 char PC[] = {POT,PHOTO1,PHOTO2};
-char PB[] = {SW1};
+char PB[] = {SW1,SW2};
 
 void setup(void){
   
@@ -31,9 +31,12 @@ void setup(void){
 }
 
 void loop(void){
-  static char Master_Reg = analogRead(0);
-  Serial.println(Master_Reg);
-  delay(1000);
+  //static char Master_Reg = Register_Update();
+  int thresh1 = Update_Thresh_P1();
+  int thresh2 = Update_Thresh_P2();
+  char Register = ((Photo_ReadR(thresh2)<<1)|(Photo_ReadF(thresh1)))&0x03;
+  //Serial.write(Register); (Steer()<<3)|(Horn()<<2)|
+  Serial.write(Register);
 }
 
 char Register_Update(void){
@@ -53,19 +56,19 @@ char Steer(void){
 }
 
 char Horn(void){
-  return (PINB&SW1)?0:1;
+  return (PINB&SW2)?0:1;
 }
 
 int Update_Thresh_P1(void){
   static int thresh_P1 = Get_ADC(PHOTO1)-20;
-
-  return thresh_P1 = (PINB&SW2)?thresh_P1:(Get_ADC(PHOTO1)-20);
+  thresh_P1 = (PINB&SW1)?thresh_P1:(Get_ADC(PHOTO1)-20);
+  return thresh_P1;
 }
 
 int Update_Thresh_P2(void){
   static int thresh_P2 = Get_ADC(PHOTO2)-20;
-
-  return thresh_P2 = (PINB&SW2)?thresh_P2:(Get_ADC(PHOTO2)-20);
+  thresh_P2 = (PINB&SW1)?thresh_P2:(Get_ADC(PHOTO2)-20);
+  return thresh_P2;
 }
 
 void ADC_Init(void){
