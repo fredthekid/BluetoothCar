@@ -27,7 +27,7 @@ void setup(void){
   
   ADC_Init();
   
-  Serial.begin(9600);
+  mySerial.begin(9600);
 }
 
 void loop(void){
