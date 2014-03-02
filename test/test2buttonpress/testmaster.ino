@@ -16,11 +16,6 @@ void loop()
 	boolean button = false;
 	if(digitalRead(8)==LOW)
 	{
-		button = true;
-	}
-
-	if(button)
-	{
 		mySerial.write('n');
 	}
       delay(100);
