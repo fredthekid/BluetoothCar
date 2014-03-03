@@ -14,7 +14,7 @@ void setup(){
    pinMode(8,OUTPUT); //front led
    pinMode(9,OUTPUT); //speed motor
    pinMode(10,OUTPUT); //speed motor
-   pintMode(11,OUTPUT); //steering servo
+   pinMode(11,OUTPUT); //steering servo
    pinMode(12,OUTPUT); //back led
    pinMode(13,OUTPUT); //back led
    
@@ -24,8 +24,8 @@ void setup(){
    TCCR1A = 0b11110010;		// Clear OC1A/OC1B on compare match, set OC1A/OC1B at BOTTOM, Fast PWM mode
    TCCR1B = 0b00011010;		// input noise canceler, input capture rising edge, 1 prescale
    ICR1 = 42000;     		// set period of PWM signal
-   OCR1A = 3000;				// set high time of output PWM signal
-   OCR1B = 3000;				// set high time of output PWM signal
+   OCR1A = 3000;		// set high time of output PWM signal
+   OCR1B = 3000;		// set high time of output PWM signal
 }
 
 void loop(){
