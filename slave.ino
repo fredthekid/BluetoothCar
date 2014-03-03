@@ -18,9 +18,9 @@ void setup(){
    pinMode(12,OUTPUT); //back led
    pinMode(13,OUTPUT); //back led
    
-   TCCR2A = 0b11000010;
-   TCCR2B = 0b00001101;
-   OCR2A = 188;
+   //TCCR2A = 0b11000010;
+   //TCCR2B = 0b00001101;
+  // OCR2A = 188;
    TCCR1A = 0b11110010;		// Clear OC1A/OC1B on compare match, set OC1A/OC1B at BOTTOM, Fast PWM mode
    TCCR1B = 0b00011010;		// input noise canceler, input capture rising edge, 1 prescale
    ICR1 = 42000;     		// set period of PWM signal
@@ -41,13 +41,21 @@ void loop(){
       default:Stop();
    }
    
-   char steer = Reg_value & 0x0F8;
+   char steer = Reg_value & 0xF8;
    steer >> 3;
-   OCR2A = map(steer, 0, 31, 136, 230);
+   if(steer < 16)
+   {
+    analogWrite(11, map(steer, 0, 15, 55, 64));
+   }
+   else
+   {
+    analogWrite(11, map(steer, 16, 31, 65, 80));
+   }
+  
   
    if((0x04&Reg_value) == 4)
    {
-      tone(buzzerPin,523,2000);
+      tone(buzzerPin,440,2000);
    }
    else
    {
