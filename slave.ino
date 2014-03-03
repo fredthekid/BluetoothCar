@@ -43,15 +43,7 @@ void loop(){
    
    char steer = Reg_value & 0xF8;
    steer >> 3;
-   if(steer < 16)
-   {
-    analogWrite(11, map(steer, 0, 15, 55, 64));
-   }
-   else
-   {
-    analogWrite(11, map(steer, 16, 31, 65, 80));
-   }
-  
+   analogWrite(11, steer + 56);
   
    if((0x04&Reg_value) == 4)
    {
