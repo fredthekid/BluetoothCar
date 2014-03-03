@@ -51,7 +51,7 @@ char Photo_ReadR(int thresh){
 }
 
 char Steer(void){
-  return map(analogRead(POT),0,1023,0,31);
+  return map(analogRead(POT),0,1023,0,24);
 }
 
 char Horn(void){
