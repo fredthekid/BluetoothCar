@@ -87,3 +87,13 @@ void Reverse(void){
  }
   
 }
+
+//  TCCR2A  =0b11000010;
+//  TCCR2B  =0b00001101;
+//  OCR2A   =188;
+
+// for(int i=136;i<=230;i++){
+//   
+//   OCR2A = i; 
+//   delay(20);
+// }
