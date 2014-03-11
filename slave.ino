@@ -47,7 +47,7 @@ void loop(){
   
    if((0x04&Reg_value) == 4)
    {
-      tone(buzzerPin,440,2000);
+      analogWrite(buzzerPin,180);
    }
    else
    {
