@@ -1,4 +1,4 @@
 arduino bluetooth car
 =
 
-ee174 project
+One of my first embedded programming assignments :). Created controller and car which communicated using bluetooth.
