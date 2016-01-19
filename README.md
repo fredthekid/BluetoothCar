@@ -1,4 +1,4 @@
 arduino bluetooth car
 =
 
-Created controller and car which communicated using bluetooth.
+controller + car using bluetooth communication.
